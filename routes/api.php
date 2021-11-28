@@ -23,12 +23,12 @@ Route::get('/restapi/search/{devise}', [RestapiController::class, 'search']);
 
 
 // Protected routes
-// Route::group(['middleware'=> ['auth:sanctum']], function () {
+Route::group(['middleware'=> ['auth:sanctum']], function () {
     Route::post('/restapi', [RestapiController::class, 'store']);
     Route::put('/restapi/{id}', [RestapiController::class, 'update']);
     Route::delete('/restapi/{id}', [RestapiController::class, 'destroy']);
     
-// });
+});
 
 
 
