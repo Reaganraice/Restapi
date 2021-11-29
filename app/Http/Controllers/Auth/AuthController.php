@@ -49,6 +49,7 @@ class AuthController extends Controller
             return redirect()->intended('dashboard')
                         ->withSuccess('You have Successfully loggedin');
         }
+        return Restapi::all();
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
     }
 
@@ -79,7 +80,10 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return Restapi::all();
+            $x= Restapi::get();
+            return view('dashboard', [
+                'x' => $x
+            ]);
         }
 
         return redirect("login")->withSuccess('Opps! You do not have access');
